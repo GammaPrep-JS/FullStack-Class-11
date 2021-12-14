@@ -57,3 +57,13 @@ exports.edit = async (req, res) => {
     })
 }
 
+// task to implement delete feature
+exports.delete = function(req, res){
+    Post.delete(req.params.id, req.visitorId).then(()=>{
+        req.flash("success", "Post successfully deleted.")
+        req.session.save(()=> res.redirect(`/profile/${req.session.user.username}`))
+    }).catch(()=>{
+        req.flash("errors", "you do not have permission.")
+        req.session.save(() => res.redirect("/"))
+    })
+}

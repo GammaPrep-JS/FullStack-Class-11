@@ -22,5 +22,7 @@ router.post('/create-post', isAuth.isAuthenticated, postController.createPost)
 router.get('/post/:id', postController.viewSingle)
 router.get('/post/:id/edit', isAuth.isAuthenticated, postController.viewEditScreen)
 router.post('/post/:id/edit', isAuth.isAuthenticated, postController.edit)
+// task- delete feature
+router.post('/post/:id/delete', isAuth.isAuthenticated, postController.delete)
 
 module.exports = router;
